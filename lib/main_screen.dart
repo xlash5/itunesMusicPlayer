@@ -114,8 +114,10 @@ class _MainScreenState extends State<MainScreen> {
               height: 480,
               width: 400,
               color: Color(0xff77d8d8),
-              child: ListView(
-                children: list ? queryList : [],
+              child: Scrollbar(
+                child: ListView(
+                  children: list ? queryList : [],
+                ),
               ),
             ),
           ),

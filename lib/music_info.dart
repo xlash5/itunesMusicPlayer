@@ -47,7 +47,10 @@ class MusicInfo extends StatelessWidget {
               child: Container(
                 height: 100,
                 // color: Colors.teal,
-                child: Image.network(artworkUrl100),
+                child: Hero(
+                  tag: 'artwork$trackId',
+                  child: Image.network(artworkUrl100),
+                ),
               ),
             ),
             Expanded(

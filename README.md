@@ -1,16 +1,7 @@
-# itunesapp
+# itunesMusicPlayer 🎵
 
-A new Flutter project.
+This is a music player that gets data from itunes. Wehen the application opens you have a textfield to search for musics. After you hit the button you can see the all results as a list. By clicking whichever song you want from the list you are navigating to player screen which now you can also play the sample of the song.
 
-## Getting Started
+## Android Application Screens 📱
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+(https://github.com/xlash5/itunesMusicPlayer/blob/master/demo.gif)

@@ -4,4 +4,4 @@ This is a music player that gets data from itunes. Wehen the application opens y
 
 ## Android Application Screens 📱
 
-(https://github.com/xlash5/itunesMusicPlayer/blob/master/demo.gif)
+![Finished App](https://github.com/xlash5/itunesMusicPlayer/blob/master/demo.gif)

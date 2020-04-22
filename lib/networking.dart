@@ -5,7 +5,7 @@ const url = 'https://itunes.apple.com/search?term=';
 
 class Networking {
   Future getQuery(String query) async {
-    String queryURL = url + query + '&limit=5';
+    String queryURL = url + query;
     var response = await http.get(queryURL);
     if (response.statusCode == 200) {
       var jsonResponse = jsonDecode(response.body);

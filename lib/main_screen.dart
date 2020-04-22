@@ -10,17 +10,30 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  Networking networking = Networking();
   String queryInput;
   var songList;
   bool list = false;
-
-  listItems() {
-    return MusicInfo(
-      artistName: songList['results'][0]['artistName'],
-      trackName: songList['results'][0]['trackName'],
-      artworkUrl100: songList['results'][0]['artworkUrl100'],
-      collectionName: songList['results'][0]['collectionName'],
-    );
+  int resultCount;
+  List<MusicInfo> queryList = [];
+  List<MusicInfo> listItems() {
+    List<MusicInfo> qList = [];
+    if (resultCount != 0) {
+      for (int i = 0; i < resultCount; i++) {
+        MusicInfo newSong = MusicInfo(
+          artistName: songList['results'][i]['artistName'],
+          trackName: songList['results'][i]['trackName'],
+          artworkUrl100: songList['results'][i]['artworkUrl100'],
+          collectionName: songList['results'][i]['collectionName'],
+          trackId: songList['results'][i]['trackId'],
+          previewUrl: songList['results'][i]['previewUrl'],
+        );
+        qList.add(newSong);
+      }
+      return qList;
+    } else {
+      return qList;
+    }
   }
 
   @override
@@ -67,10 +80,13 @@ class _MainScreenState extends State<MainScreen> {
                       height: 60,
                       child: FlatButton(
                         onPressed: () async {
-                          var data = await Networking().getQuery(queryInput);
+                          var data = await networking.getQuery(queryInput);
+                          var dataL = await data['resultCount'];
                           setState(() {
                             songList = data;
                             list = true;
+                            resultCount = dataL;
+                            queryList = listItems();
                           });
                         },
                         child: Text('Go'),
@@ -99,22 +115,7 @@ class _MainScreenState extends State<MainScreen> {
               width: 400,
               color: Color(0xff77d8d8),
               child: ListView(
-                children: <Widget>[
-                  list
-                      ? MusicInfo(
-                          artistName: songList['results'][0]['artistName'],
-                          trackName: songList['results'][0]['trackName'],
-                          artworkUrl100: songList['results'][0]
-                              ['artworkUrl100'],
-                          collectionName: songList['results'][0]
-                              ['collectionName'],
-                          previewUrl: songList['results'][0]['previewUrl'],
-                        )
-                      : Text(
-                          'Search for something',
-                          textAlign: TextAlign.center,
-                        ),
-                ],
+                children: list ? queryList : [],
               ),
             ),
           ),

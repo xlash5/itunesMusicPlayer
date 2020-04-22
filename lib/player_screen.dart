@@ -56,10 +56,13 @@ class _PlayerScreenState extends State<PlayerScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.network(
-              artworkUrl100,
-              cacheWidth: 150,
-              cacheHeight: 150,
+            Hero(
+              tag: 'artwork$trackId',
+              child: Image.network(
+                artworkUrl100,
+                cacheWidth: 150,
+                cacheHeight: 150,
+              ),
             ),
             Text(artistName),
             Text(collectionName),
